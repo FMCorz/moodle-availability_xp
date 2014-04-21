@@ -29,5 +29,5 @@ $string['invalidlevel'] = 'Invalid level';
 $string['levelgreaterorequalto'] = 'Level is greater or equal to';
 $string['levelnnotrequiredtoaccess'] = 'You are not level {$a} or greater.';
 $string['levelnrequiredtoaccess'] = 'You are level {$a} or greater.';
-$string['pluginname'] = 'Restriction by level';
+$string['pluginname'] = 'Level availability';
 $string['title'] = 'Level';
