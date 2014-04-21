@@ -37,6 +37,9 @@ class condition extends \core_availability\condition {
     /** @var int The level required. */
     protected $requiredlvl = 0;
 
+    /** @var array Static cache for user level. */
+    protected static $lvlcache = array();
+
     /**
      * Constructor.
      *
@@ -64,9 +67,8 @@ class condition extends \core_availability\condition {
         $available = false;
 
         if ($this->requiredlvl > 0) {
-            $xpman = new \block_xp_manager($info->get_course()->id);
-            $progress = $xpman->get_progress_for_user($userid);
-            if ($progress->level >= $this->requiredlvl) {
+            $currentlvl = $this->get_user_level($info->get_course()->id, $userid);
+            if ($currentlvl >= $this->requiredlvl) {
                 $available = true;
             } else {
                 $available = false;
@@ -107,6 +109,24 @@ class condition extends \core_availability\condition {
      */
     protected function get_debug_string() {
         return $this->requiredlvl;
+    }
+
+    /**
+     * Return the current level of the user.
+     *
+     * @param  int $courseid The course ID.
+     * @param  int $userid The user ID.
+     * @return int The user level.
+     */
+    protected function get_user_level($courseid, $userid) {
+        // Basic static cache to improve performance.
+        $cachekey = $courseid . ':' . $userid;
+        if (!isset(self::$lvlcache[$cachekey])) {
+            $xpman = \block_xp_manager::get($courseid);
+            $progress = $xpman->get_progress_for_user($userid);
+            self::$lvlcache[$cachekey] = $progress->level;
+        }
+        return self::$lvlcache[$cachekey];
     }
 
     /**
