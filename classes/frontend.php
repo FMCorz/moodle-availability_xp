@@ -44,7 +44,7 @@ class frontend extends \core_availability\frontend {
      * @return bool False when adding is disabled.
      */
     protected function allow_add($course, \cm_info $cm = null, \section_info $section = null) {
-        $xpman = new \block_xp_manager($course->id);
+        $xpman = \block_xp_manager::get($course->id);
         return $xpman->is_enabled();
     }
 
@@ -67,7 +67,7 @@ class frontend extends \core_availability\frontend {
      * @return array Array of parameters for the JavaScript function
      */
     protected function get_javascript_init_params($course, \cm_info $cm = null, \section_info $section = null) {
-        $xpman = new \block_xp_manager($course->id);
+        $xpman = \block_xp_manager::get($course->id);
         return array((object) array('levels' => $xpman->get_level_count()));
     }
 
