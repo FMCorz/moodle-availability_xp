@@ -68,7 +68,7 @@ class frontend extends \core_availability\frontend {
      */
     protected function get_javascript_init_params($course, \cm_info $cm = null, \section_info $section = null) {
         $xpman = \block_xp_manager::get($course->id);
-        return array((object) array('levels' => $xpman->get_level_count()));
+        return array((object) array('levels' => (int) $xpman->get_level_count()));
     }
 
 }

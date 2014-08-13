@@ -73,9 +73,9 @@ M.availability_xp.form = Y.merge(M.core_availability.plugin, {
 
     fillErrors: function(errors, node) {
         var select = node.one('select'),
-            level = select.get('value');
+            level = parseInt(select.get('value'), 10);
 
-        if (level < 1 || level > this.levels) {
+        if (isNaN(level) || level < 1 || level > this.levels) {
             errors.push('availability_xp:invalidlevel');
         }
     }
