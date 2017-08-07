@@ -122,9 +122,10 @@ class condition extends \core_availability\condition {
         // Basic static cache to improve performance.
         $cachekey = $courseid . ':' . $userid;
         if (!isset(self::$lvlcache[$cachekey])) {
-            $xpman = \block_xp_manager::get($courseid);
-            $progress = $xpman->get_progress_for_user($userid);
-            self::$lvlcache[$cachekey] = $progress->level;
+            $world = \block_xp\di::get('course_world_factory')->get_world($courseid);
+            $store = $world->get_store();
+            $state = $store->get_state($userid);
+            self::$lvlcache[$cachekey] = $state->get_level()->get_level();
         }
         return self::$lvlcache[$cachekey];
     }
