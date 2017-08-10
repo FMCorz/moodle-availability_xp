@@ -54,7 +54,11 @@ M.availability_xp.form = Y.merge(M.core_availability.plugin, {
                 levels: levelObj
             }));
 
-            Y.one('#fitem_id_availabilityconditionsjson').delegate('change', function() {
+            var availabilitynode = (Y.one('.availability-field') !== null) ?
+                    Y.one('.availability-field') :
+                    Y.one('#fitem_id_availabilityconditionsjson');
+
+            availabilitynode.delegate('change', function() {
                 M.core_availability.form.update();
             }, '.availability_xp select');
         }
