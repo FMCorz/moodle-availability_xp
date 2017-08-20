@@ -1,7 +1,7 @@
-Level availability (availability_xp)
-====================================
+Level up! Availability (availability_xp)
+========================================
 
-Moodle plugin to limit the access to a course module according to the user level of experience.
+Moodle plugin to limit the access to course content according to the user level of experience.
 
 Features
 --------
@@ -20,7 +20,7 @@ How to use
 1. Install the block [Level up!](https://github.com/FMCorz/moodle-block_xp)
 2. Install this plugin
 3. Add the block 'Level up!' to a course
-4. Find the new 'Level' restriction under 'Restrict access' in a module settings
+4. Find the new 'Level' restriction under 'Restrict access' in activity/section settings
 
 License
 -------
