@@ -22,7 +22,7 @@ YUI.add('moodle-availability_xp-form', function (Y, NAME) {
  */
 
 var TEMPLATE = '<label>{{get_string "levelgreaterorequalto" "availability_xp"}} ' +
-    '<select name="level">' +
+    '<select name="level" class="custom-select">' +
     '{{#each levels}}<option value="{{this}}">{{this}}</option>{{/each}}' +
     '</select>' +
     '</label>';
@@ -42,6 +42,7 @@ M.availability_xp.form = Y.merge(M.core_availability.plugin, {
         var template,
             levelObj = [],
             node,
+            opt,
             i;
 
         if (!this._node) {
@@ -61,7 +62,8 @@ M.availability_xp.form = Y.merge(M.core_availability.plugin, {
 
         node = this._node.cloneNode(true);
         if (typeof json.requiredlvl !== 'undefined') {
-            node.one('select option[value="' + json.requiredlvl + '"]').set('selected', 'selected');
+            // Set the level in the select box, it will not be set if invalid which is what we want.
+            node.one('select').set('value', json.requiredlvl);
         }
 
         return node;
