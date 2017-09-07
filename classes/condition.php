@@ -136,7 +136,7 @@ class condition extends \core_availability\condition {
      * @return stdClass Structure object (ready to be made into JSON format)
      */
     public function save() {
-        return (object) array('requiredlvl' => $this->requiredlvl);
+        return (object) array('type' => $this->get_type(), 'requiredlvl' => $this->requiredlvl);
     }
 
 }
