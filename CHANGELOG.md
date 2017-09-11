@@ -1,6 +1,11 @@
 Changelog
 =========
 
+v2.0.2
+------
+
+- Fix for restoring xp backup files with availability - Adrian Greeve
+
 v2.0.1
 ------
 
