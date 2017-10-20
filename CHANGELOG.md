@@ -1,6 +1,11 @@
 Changelog
 =========
 
+v2.0.3
+------
+
+- Fixed error when the user is not logged in and not a guest
+
 v2.0.2
 ------
 
