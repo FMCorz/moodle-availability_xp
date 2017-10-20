@@ -66,6 +66,10 @@ class condition extends \core_availability\condition {
     public function is_available($not, \core_availability\info $info, $grabthelot, $userid) {
         $available = false;
 
+        if (!$userid || isguestuser($userid) || !\core_user::is_real_user($userid)) {
+            return false;
+        }
+
         if ($this->requiredlvl > 0) {
             $currentlvl = $this->get_user_level($info->get_course()->id, $userid);
             if ($currentlvl >= $this->requiredlvl) {
