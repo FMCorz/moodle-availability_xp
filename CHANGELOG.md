@@ -1,6 +1,11 @@
 Changelog
 =========
 
+Unreleased
+------
+
+- Declare that this plugin does not store any personal data - Jan Dageförde
+
 v2.0.3
 ------
 

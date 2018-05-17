@@ -15,22 +15,31 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Language file.
+ * Privacy Subsystem implementation for availability_xp.
  *
  * @package    availability_xp
- * @copyright  2014 Frédéric Massart
+ * @copyright  2018 Jan Dageförde
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+namespace availability_xp\privacy;
 defined('MOODLE_INTERNAL') || die();
 
-$string['description'] = 'Prevent access depending on the level of the user.';
-$string['invalidlevel'] = 'Invalid level';
-$string['levelgreaterorequalto'] = 'Level is greater or equal to';
-$string['levelnnotrequiredtoaccess'] = 'You are not level {$a} or greater.';
-$string['levelnrequiredtoaccess'] = 'You are level {$a} or greater.';
-$string['pluginname'] = 'Level availability';
-$string['title'] = 'Level';
-
-// Privacy API.
-$string['privacy:metadata'] = 'The plugin does not store any personal data.';
+/**
+ * Privacy Subsystem for availability_xp implementing null_provider.
+ *
+ * @copyright  2018 Jan Dageförde
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+class provider implements \core_privacy\local\metadata\null_provider {
+    use \core_privacy\local\legacy_polyfill;
+    /**
+     * Get the language string identifier with the component's language
+     * file to explain why this plugin stores no data.
+     *
+     * @return  string
+     */
+    public static function _get_reason() {
+        return 'privacy:metadata';
+    }
+}
