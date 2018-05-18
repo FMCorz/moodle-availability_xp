@@ -30,7 +30,5 @@ $string['levelgreaterorequalto'] = 'Level is greater or equal to';
 $string['levelnnotrequiredtoaccess'] = 'You are not level {$a} or greater.';
 $string['levelnrequiredtoaccess'] = 'You are level {$a} or greater.';
 $string['pluginname'] = 'Level availability';
-$string['title'] = 'Level';
-
-// Privacy API.
 $string['privacy:metadata'] = 'The plugin does not store any personal data.';
+$string['title'] = 'Level';

@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Privacy Subsystem implementation for availability_xp.
+ * Privacy provider.
  *
  * @package    availability_xp
  * @copyright  2018 Jan Dageförde
@@ -26,20 +26,21 @@ namespace availability_xp\privacy;
 defined('MOODLE_INTERNAL') || die();
 
 /**
- * Privacy Subsystem for availability_xp implementing null_provider.
+ * Privacy provider class.
  *
  * @copyright  2018 Jan Dageförde
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class provider implements \core_privacy\local\metadata\null_provider {
     use \core_privacy\local\legacy_polyfill;
+
     /**
-     * Get the language string identifier with the component's language
-     * file to explain why this plugin stores no data.
+     * Get the reason.
      *
-     * @return  string
+     * @return string
      */
     public static function _get_reason() {
         return 'privacy:metadata';
     }
+
 }

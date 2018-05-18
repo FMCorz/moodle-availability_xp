@@ -1,10 +1,10 @@
 Changelog
 =========
 
-Unreleased
+v2.0.4
 ------
 
-- Declare that this plugin does not store any personal data - Jan Dageförde
+- Implement privacy API (GDPR compliance) - Jan Dageförde
 
 v2.0.3
 ------
