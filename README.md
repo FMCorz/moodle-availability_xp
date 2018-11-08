@@ -22,6 +22,27 @@ How to use
 3. Add the block 'Level up!' to a course
 4. Find the new 'Level' restriction under 'Restrict access' in activity/section settings
 
+Installation
+------------
+
+### Zip upload
+
+If you have configured Moodle to allow plugin installation from the user interface, and you received a zip of the plugin, follow the following steps. If not, refer to the manual process.
+
+1. Visit the _Install plugins_ admin page (Site administration > Plugins > Install plugins)
+2. Drag & drop the plugin in the _Zip package_ area
+3. Click _Install plugin from the ZIP file_ and follow the process
+
+That's it!
+
+### Manual process
+
+1. Place the content of this plugin in the folder `availability/condition/xp`.
+2. Visit your admin's _Notifications_ page (Site administration > Notifications)
+3. Follow the upgrade process
+
+That's it!
+
 License
 -------
 
