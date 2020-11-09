@@ -25,7 +25,7 @@ var TEMPLATE = '<label>{{get_string "levelgreaterorequalto" "availability_xp"}} 
     '</select>' +
     '</label>';
 
-M.availability_xp = M.availability_xp || {};
+M.availability_xp = M.availability_xp || {}; // eslint-disable-line
 
 M.availability_xp.form = Y.merge(M.core_availability.plugin, {
 
@@ -40,7 +40,6 @@ M.availability_xp.form = Y.merge(M.core_availability.plugin, {
         var template,
             levelObj = [],
             node,
-            opt,
             i;
 
         if (!this._node) {
@@ -71,6 +70,7 @@ M.availability_xp.form = Y.merge(M.core_availability.plugin, {
         var select = node.one('select'),
             level = select.get('value');
         value.requiredlvl = level;
+        value.operator = 0;
     },
 
     fillErrors: function(errors, node) {

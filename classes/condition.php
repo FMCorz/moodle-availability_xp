@@ -34,6 +34,12 @@ defined('MOODLE_INTERNAL') || die();
  */
 class condition extends \core_availability\condition {
 
+    /** Greater or equal to (default). */
+    const OPERATOR_GTE = 0;
+
+    /** @var int An operator constant. */
+    protected $operator = self::OPERATOR_GTE;
+
     /** @var int The level required. */
     protected $requiredlvl = 0;
 
@@ -48,6 +54,9 @@ class condition extends \core_availability\condition {
     public function __construct($structure) {
         if (isset($structure->requiredlvl)) {
             $this->requiredlvl = $structure->requiredlvl;
+        }
+        if (isset($structure->operator)) {
+            $this->operator = $structure->operator;
         }
     }
 
@@ -72,10 +81,10 @@ class condition extends \core_availability\condition {
 
         if ($this->requiredlvl > 0) {
             $currentlvl = $this->get_user_level($info->get_course()->id, $userid);
-            if ($currentlvl >= $this->requiredlvl) {
-                $available = true;
-            } else {
-                $available = false;
+
+            $available = false;
+            if ($this->operator == static::OPERATOR_GTE) {
+                $available = $currentlvl >= $this->requiredlvl;
             }
 
             if ($not) {
@@ -99,10 +108,15 @@ class condition extends \core_availability\condition {
      *   this item.
      */
     public function get_description($full, $not, \core_availability\info $info) {
-        if ($not) {
-            return get_string('levelnnotrequiredtoaccess', 'availability_xp', $this->requiredlvl);
+        $message = '';
+        if ($this->operator == static::OPERATOR_GTE) {
+            if ($not) {
+                $message = get_string('levelnnotrequiredtoaccess', 'availability_xp', $this->requiredlvl);
+            } else {
+                $message = get_string('levelnrequiredtoaccess', 'availability_xp', $this->requiredlvl);
+            }
         }
-        return get_string('levelnrequiredtoaccess', 'availability_xp', $this->requiredlvl);
+        return $message;
     }
 
     /**
@@ -140,7 +154,7 @@ class condition extends \core_availability\condition {
      * @return stdClass Structure object (ready to be made into JSON format)
      */
     public function save() {
-        return (object) array('type' => $this->get_type(), 'requiredlvl' => $this->requiredlvl);
+        return (object) array('type' => $this->get_type(), 'requiredlvl' => $this->requiredlvl, 'operator' => $this->operator);
     }
 
 }
