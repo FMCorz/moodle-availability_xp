@@ -6,12 +6,13 @@ Moodle plugin to limit the access to course content according to the user level 
 Features
 --------
 
+- Restrict access to users strictly at level x.
 - Restrict access to users with a level greater or equal than x.
 
 Requirements
 ------------
 
-- Moodle 2.7 or greater.
+- Moodle 3.1 or greater.
 - Block [Level up!](https://github.com/FMCorz/moodle-block_xp)
 
 How to use
