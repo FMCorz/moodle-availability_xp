@@ -36,6 +36,8 @@ class condition extends \core_availability\condition {
 
     /** Greater or equal to (default). */
     const OPERATOR_GTE = 0;
+    /** Stricly equal to. */
+    const OPERATOR_EQ = 1;
 
     /** @var int An operator constant. */
     protected $operator = self::OPERATOR_GTE;
@@ -85,6 +87,8 @@ class condition extends \core_availability\condition {
             $available = false;
             if ($this->operator == static::OPERATOR_GTE) {
                 $available = $currentlvl >= $this->requiredlvl;
+            } else if ($this->operator == static::OPERATOR_EQ) {
+                $available = $currentlvl == $this->requiredlvl;
             }
 
             if ($not) {
@@ -115,6 +119,12 @@ class condition extends \core_availability\condition {
             } else {
                 $message = get_string('levelnrequiredtoaccess', 'availability_xp', $this->requiredlvl);
             }
+        } else if ($this->operator == static::OPERATOR_EQ) {
+            if ($not) {
+                $message = get_string('levelnexactlynotrequiredtoaccess', 'availability_xp', $this->requiredlvl);
+            } else {
+                $message = get_string('levelnexactlyrequiredtoaccess', 'availability_xp', $this->requiredlvl);
+            }
         }
         return $message;
     }
@@ -126,7 +136,7 @@ class condition extends \core_availability\condition {
      * @return string Text representation of parameters.
      */
     protected function get_debug_string() {
-        return $this->requiredlvl;
+        return $this->operator . ':' . $this->requiredlvl;
     }
 
     /**

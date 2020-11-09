@@ -26,9 +26,16 @@ defined('MOODLE_INTERNAL') || die();
 
 $string['description'] = 'Prevent access depending on the level of the user.';
 $string['invalidlevel'] = 'Invalid level';
+$string['levelconditionoperator'] = 'Level condition operator';
 $string['levelgreaterorequalto'] = 'Level is greater or equal to';
+$string['levelis'] = 'Level is';
+$string['levelnexactlynotrequiredtoaccess'] = 'You are not level {$a}.';
+$string['levelnexactlyrequiredtoaccess'] = 'You are exactly level {$a}.';
 $string['levelnnotrequiredtoaccess'] = 'You are not level {$a} or greater.';
 $string['levelnrequiredtoaccess'] = 'You are level {$a} or greater.';
+$string['levelnumber'] = 'Level number';
+$string['opequalto'] = 'Strictly equal to';
+$string['opgreaterorequalto'] = 'Greater or equal to';
 $string['pluginname'] = 'Level availability';
 $string['privacy:metadata'] = 'The plugin does not store any personal data.';
 $string['title'] = 'Level';

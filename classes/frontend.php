@@ -55,7 +55,7 @@ class frontend extends \core_availability\frontend {
      * @return array Array of required string identifiers
      */
     protected function get_javascript_strings() {
-        return array('levelgreaterorequalto');
+        return array('levelis', 'levelconditionoperator', 'levelnumber', 'levelgreaterorequalto', 'opequalto', 'opgreaterorequalto');
     }
 
     /**
