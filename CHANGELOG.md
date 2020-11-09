@@ -1,6 +1,11 @@
 Changelog
 =========
 
+v2.1.0
+------
+
+- Implemented ability to restrict to a specific level
+
 v2.0.4
 ------
 
