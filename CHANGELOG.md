@@ -1,6 +1,11 @@
 Changelog
 =========
 
+v2.1.1
+------
+
+- Renamed plugin to Level Up XP Availability
+
 v2.1.0
 ------
 
