@@ -1,6 +1,11 @@
 Changelog
 =========
 
+v2.1.2
+------
+
+- Minor coding style changes
+
 v2.1.1
 ------
 
