@@ -23,7 +23,6 @@
  */
 
 namespace availability_xp;
-defined('MOODLE_INTERNAL') || die();
 
 /**
  * Frontend class.
@@ -55,7 +54,7 @@ class frontend extends \core_availability\frontend {
      * @return array Array of required string identifiers
      */
     protected function get_javascript_strings() {
-        return array('levelis', 'levelconditionoperator', 'levelnumber', 'levelgreaterorequalto', 'opequalto', 'opgreaterorequalto');
+        return ['levelis', 'levelconditionoperator', 'levelnumber', 'levelgreaterorequalto', 'opequalto', 'opgreaterorequalto'];
     }
 
     /**
@@ -69,7 +68,7 @@ class frontend extends \core_availability\frontend {
     protected function get_javascript_init_params($course, \cm_info $cm = null, \section_info $section = null) {
         $world = \block_xp\di::get('course_world_factory')->get_world($course->id);
         $levelsinfo = $world->get_levels_info();
-        return array((object) array('levels' => $levelsinfo->get_count()));
+        return [(object) ['levels' => $levelsinfo->get_count()]];
     }
 
 }

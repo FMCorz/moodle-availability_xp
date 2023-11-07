@@ -23,7 +23,6 @@
  */
 
 namespace availability_xp;
-defined('MOODLE_INTERNAL') || die();
 
 /**
  * Condition class.
@@ -46,7 +45,7 @@ class condition extends \core_availability\condition {
     protected $requiredlvl = 0;
 
     /** @var array Static cache for user level. */
-    protected static $lvlcache = array();
+    protected static $lvlcache = [];
 
     /**
      * Constructor.
@@ -164,7 +163,7 @@ class condition extends \core_availability\condition {
      * @return stdClass Structure object (ready to be made into JSON format)
      */
     public function save() {
-        return (object) array('type' => $this->get_type(), 'requiredlvl' => $this->requiredlvl, 'operator' => $this->operator);
+        return (object) ['type' => $this->get_type(), 'requiredlvl' => $this->requiredlvl, 'operator' => $this->operator];
     }
 
 }
