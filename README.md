@@ -15,6 +15,8 @@ Requirements
 - Moodle 3.1 or greater.
 - Block [Level Up XP](https://github.com/FMCorz/moodle-block_xp)
 
+_Running behats tests requires XP 18.0 or greater._
+
 How to use
 ----------
 
