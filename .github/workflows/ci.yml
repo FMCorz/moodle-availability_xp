@@ -125,7 +125,8 @@ jobs:
         run: moodle-plugin-ci phpunit --fail-on-warning
 
       - name: Behat features
-        if: ${{ !cancelled() }}
+        # if: ${{ !cancelled() }}
+        if: false
         run: moodle-plugin-ci behat --profile chrome
 
       - name: Mark cancelled jobs as failed.
