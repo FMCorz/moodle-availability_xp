@@ -42,7 +42,7 @@ class frontend extends \core_availability\frontend {
      * @param \section_info $section Section currently being edited (null if none)
      * @return bool False when adding is disabled.
      */
-    protected function allow_add($course, \cm_info $cm = null, \section_info $section = null) {
+    protected function allow_add($course, ?\cm_info $cm = null, ?\section_info $section = null) {
         $world = \block_xp\di::get('course_world_factory')->get_world($course->id);
         return $world->get_config()->get('enabled');
     }
@@ -65,7 +65,7 @@ class frontend extends \core_availability\frontend {
      * @param \section_info $section Section currently being edited (null if none)
      * @return array Array of parameters for the JavaScript function
      */
-    protected function get_javascript_init_params($course, \cm_info $cm = null, \section_info $section = null) {
+    protected function get_javascript_init_params($course, ?\cm_info $cm = null, ?\section_info $section = null) {
         $world = \block_xp\di::get('course_world_factory')->get_world($course->id);
         $levelsinfo = $world->get_levels_info();
         return [(object) ['levels' => $levelsinfo->get_count()]];
