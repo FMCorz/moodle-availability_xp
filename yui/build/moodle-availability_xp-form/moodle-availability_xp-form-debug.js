@@ -21,21 +21,21 @@ YUI.add('moodle-availability_xp-form', function (Y, NAME) {
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-var TEMPLATE = '<div>' +
-    '{{get_string "levelis" "availability_xp"}} ' +
-    '<label><span class="accesshide sr-only">{{ get_string "levelconditionoperator" "availability_xp" }}</span>' +
-    '<select name="level" class="level-operator custom-select">' +
+var TEMPLATE = '<div class="availability_xp_frontend"><div>' +
+    '<span>{{get_string "levelis" "availability_xp"}}</span>' +
+    '<label><span class="accesshide sr-only visually-hidden">{{ get_string "levelconditionoperator" "availability_xp" }}</span>' +
+    '<select name="level" class="level-operator custom-select form-select">' +
     '<option value="{{ OPERATOR_GTE }}">{{get_string "opgreaterorequalto" "availability_xp"}}</option>' +
     '<option value="{{ OPERATOR_EQ }}">{{get_string "opequalto" "availability_xp"}}</option>' +
     '</select>' +
     '</label>' +
     ' ' +
-    '<label><span class="accesshide sr-only">{{ get_string "levelnumber" "availability_xp" }}</span>' +
-    '<select name="level" class="level-number custom-select">' +
+    '<label><span class="accesshide sr-only visually-hidden">{{ get_string "levelnumber" "availability_xp" }}</span>' +
+    '<select name="level" class="level-number custom-select form-select">' +
     '{{#each levels}}<option value="{{this}}">{{this}}</option>{{/each}}' +
     '</select>' +
     '</label>' +
-    '</div>';
+    '</div></div>';
 
 var OPERATOR_GTE = 0;
 var OPERATOR_EQ = 1;
