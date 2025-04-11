@@ -1,6 +1,12 @@
 Changelog
 =========
 
+v2.2.0
+------
+
+- Compatibility with Moodle 5.0
+- Behat tests to confirm behaviour of access restriction
+
 v2.1.2
 ------
 
