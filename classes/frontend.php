@@ -32,7 +32,6 @@ namespace availability_xp;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class frontend extends \core_availability\frontend {
-
     /**
      * Decides whether this plugin should be available in a given course. The
      * plugin can do this depending on course or system settings.
@@ -70,5 +69,4 @@ class frontend extends \core_availability\frontend {
         $levelsinfo = $world->get_levels_info();
         return [(object) ['levels' => $levelsinfo->get_count()]];
     }
-
 }

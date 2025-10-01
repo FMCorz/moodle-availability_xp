@@ -32,7 +32,6 @@ namespace availability_xp;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class condition extends \core_availability\condition {
-
     /** Greater or equal to (default). */
     const OPERATOR_GTE = 0;
     /** Stricly equal to. */
@@ -165,5 +164,4 @@ class condition extends \core_availability\condition {
     public function save() {
         return (object) ['type' => $this->get_type(), 'requiredlvl' => $this->requiredlvl, 'operator' => $this->operator];
     }
-
 }

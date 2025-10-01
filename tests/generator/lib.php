@@ -25,7 +25,6 @@ use availability_xp\condition;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class availability_xp_generator extends component_generator_base {
-
     /**
      * Create a restriction.
      *
@@ -66,5 +65,4 @@ class availability_xp_generator extends component_generator_base {
         ]);
         $DB->set_field('course_modules', 'availability', $availability, ['id' => $data->cmid]);
     }
-
 }
