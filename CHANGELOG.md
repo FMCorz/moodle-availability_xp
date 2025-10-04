@@ -1,6 +1,12 @@
 Changelog
 =========
 
+v2.2.1
+------
+
+- Compatibility with Moodle 5.1
+- Minor coding style changes
+
 v2.2.0
 ------
 
