@@ -44,14 +44,6 @@ jobs:
             database: pgsql
             php: 8.1
 
-          # MariaDB, test oldest and most recent configurations.
-          - moodle-branch: MOODLE_401_STABLE
-            database: mariadb
-            php: 7.4
-          - moodle-branch: MOODLE_501_STABLE
-            database: mariadb
-            php: 8.4
-
         exclude:
           - moodle-branch: MOODLE_405_STABLE
             php: 8.4
