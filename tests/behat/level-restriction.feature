@@ -28,8 +28,10 @@ Feature: Testing that activity access can be based on levels
       | PAGE2    | 2     | gte  |
       | PAGE3    | 5     | eq   |
       | PAGE4    | 5     | gte  |
-    And I am on the "c1" "block_xp > rules" page logged in as t1
+    And I am on the "c1" "block_xp > rules" page logged in as "t1"
     And I delete all XP event rules
+    And I am on the "c1" "block_xp > action rules" page logged in as "t1"
+    And I delete all XP action rules
 
   @javascript
   Scenario: Students access restriction based on levels
