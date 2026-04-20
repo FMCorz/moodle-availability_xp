@@ -1,6 +1,11 @@
 Changelog
 =========
 
+v2.2.2
+------
+
+- Compatibility with Moodle 5.2
+
 v2.2.1
 ------
 
@@ -31,7 +36,8 @@ v2.1.0
 v2.0.4
 ------
 
-- Implement privacy API (GDPR compliance) - Jan Dageförde
+- Implement privacy API (GDPR compliance) - Jan Dageförde$
+- $
 
 v2.0.3
 ------

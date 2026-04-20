@@ -6,15 +6,18 @@ on:
       - master
 
 env:
-  BLOCK_XP_TAG: 'v19.0'
+  BLOCK_XP_TAG: 'v20.0-rc1'
+  TESTS_REPO_TAG: 'master'
 
 jobs:
   test:
     runs-on: ubuntu-22.04
+    env:
+      HAS_TESTS_REPO_SSHKEY: ${{ secrets.TESTS_REPO_SSHKEY != '' }}
 
     services:
       postgres:
-        image: postgres:15
+        image: postgres:16
         env:
           POSTGRES_USER: 'postgres'
           POSTGRES_HOST_AUTH_METHOD: 'trust'
@@ -26,7 +29,7 @@ jobs:
       fail-fast: false
       matrix:
         php: ['8.2', '8.3', '8.4']
-        moodle-branch: ['MOODLE_405_STABLE', 'MOODLE_500_STABLE', 'MOODLE_501_STABLE']
+        moodle-branch: ['MOODLE_405_STABLE', 'MOODLE_500_STABLE', 'MOODLE_501_STABLE', 'MOODLE_502_STABLE']
         database: [pgsql]
         include:
           # PHP 7.4, with Moodle 4.1.
@@ -47,6 +50,8 @@ jobs:
         exclude:
           - moodle-branch: MOODLE_405_STABLE
             php: 8.4
+          - moodle-branch: MOODLE_502_STABLE
+            php: 8.2
 
     steps:
       - name: Check out repository code
@@ -74,6 +79,23 @@ jobs:
 
       - name: Add plugin block_xp ${{ env.BLOCK_XP_TAG }}
         run: moodle-plugin-ci add-plugin --branch ${{ env.BLOCK_XP_TAG }} FMCorz/moodle-block_xp
+
+      - name: Delete queued block_xp tests content
+        if: ${{ env.HAS_TESTS_REPO_SSHKEY == 'true' }}
+        run: |
+          rm -rf moodle-plugin-ci-plugins/moodle-block_xp/tests/* \
+            moodle-plugin-ci-plugins/moodle-block_xp/tests/.[!.]* \
+            moodle-plugin-ci-plugins/moodle-block_xp/tests/..?*
+
+      - name: Check out private block_xp tests repository
+        if: ${{ env.HAS_TESTS_REPO_SSHKEY == 'true' }}
+        uses: actions/checkout@v4
+        with:
+          repository: branchup/block_xp-tests
+          ref: ${{ env.TESTS_REPO_TAG }}
+          path: moodle-plugin-ci-plugins/moodle-block_xp/tests
+          token: '-'
+          ssh-key: ${{ secrets.TESTS_REPO_SSHKEY }}
 
       - name: Install moodle-plugin-ci
         run: |
@@ -122,11 +144,11 @@ jobs:
       #   run: moodle-plugin-ci grunt --max-lint-warnings 0
 
       - name: PHPUnit tests
-        if: ${{ !cancelled() }}
+        if: ${{ !cancelled() && env.HAS_TESTS_REPO_SSHKEY == 'true' }}
         run: moodle-plugin-ci phpunit --fail-on-warning
 
       - name: Behat features
-        if: ${{ !cancelled() }}
+        if: ${{ !cancelled() && env.HAS_TESTS_REPO_SSHKEY == 'true' }}
         run: moodle-plugin-ci behat --profile chrome
 
       - name: Mark cancelled jobs as failed.
