@@ -24,11 +24,12 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2026042000;
+$plugin->version   = 2026100200;
 $plugin->requires  = 2014041500;
 $plugin->component = 'availability_xp';
-$plugin->release   = '2.2.2';
+$plugin->release   = '2.2.3';
 $plugin->maturity  = MATURITY_STABLE;
+$plugin->supported    = [31, 503];
 $plugin->dependencies = [
     'block_xp'  => 2017080700,
 ];
