@@ -1,0 +1,35 @@
+# Schema: https://camp-registry.org/schema/listing.schema.json
+name: Level Up XP Availability
+summary: Unlock activities, resources and course sections when learners reach the Level Up XP level you choose.
+
+description: |
+  ## Unlock course content as your learners level up.
+
+  Level Up XP Availability lets you control access to activities, resources and course sections according to each learner's level in Level Up XP. Guide learners through a learning path, introduce content progressively, or unlock optional challenges as they level up.
+
+  For example, unlock the next course section at Level 3, introduce more advanced activities at Level 5, or make a bonus challenge available at Level 10. You choose the required level and which content it opens.
+
+  ## Features
+
+  - Unlock activities, resources or whole course sections at a level you choose.
+  - Require a minimum level or restrict access to learners at one exact level.
+  - Combine level requirements with Moodle's other access restrictions.
+  - Use each learner's course or sitewide XP level, depending on your XP configuration.
+
+  ## How to use
+
+  Open the settings for the activity, resource or section you want to restrict. Under **Restrict access**, select **Add restriction**, then **Level**. Choose whether learners must reach at least the selected level or be at that exact level, enter the level number and save your changes.
+
+  Use Moodle's visibility control to show learners the level requirement or hide the content until they meet it.
+
+labels:
+  - fully-free
+
+screenshots:
+  - path: .camp/screenshots/unlock-content.png
+    caption: Activities and resources become available as learners reach the required XP levels.
+
+links:
+  docs: https://docs.levelup.plus/xp/docs/how-to/activity-access-restriction
+  issues: https://github.com/FMCorz/moodle-availability_xp/issues
+  changelog: https://github.com/FMCorz/moodle-availability_xp/blob/HEAD/CHANGELOG.md
